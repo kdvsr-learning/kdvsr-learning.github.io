@@ -1,0 +1,121 @@
+<div class="prose prose-invert max-w-none text-gray-800 dark:text-gray-200 p-2">
+    <h1 class="text-3xl font-bold mb-4 border-b pb-2 border-gray-300 dark:border-gray-600">How to Add Menu and Submenu Items</h1>
+    <p class="mb-4">This guide explains how to modify the application to include new navigation items and their corresponding content.</p>
+
+    <h2 class="text-2xl font-semibold mt-6 mb-3">File Structure Overview</h2>
+    <p class="mb-4">The key files you'll be working with are:</p>
+    <ul class="list-disc list-inside mb-4 pl-4 space-y-2">
+        <li><strong>app-data.js:</strong> Defines the structure of the navigation menu in the <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">menuItems</code> constant and provides fallback content.</li>
+        <li><strong>content/:</strong> This directory is where the markdown files (<code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">.md</code>) for each page's content should be stored.</li>
+        <li><strong>icons.js:</strong> Contains the SVG icons used in the menu.</li>
+    </ul>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-600">
+
+    <h2 class="text-2xl font-semibold mt-6 mb-3">How to Add a New Submenu Item</h2>
+    <p class="mb-4">Let's say you want to add a new topic called "Rhythm" under the "Music Theory" category.</p>
+
+    <h3 class="text-xl font-medium mt-4 mb-2">Step 1: Edit <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">app-data.js</code></h3>
+    <ol class="list-decimal list-inside mb-4 pl-4 space-y-2">
+        <li>Open the <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">app-data.js</code> file.</li>
+        <li>Find the <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">menuItems</code> array.</li>
+        <li>Locate the object for "Music Theory" (it has <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">id: 'theory'</code>).</li>
+        <li>Add a new object to its <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">children</code> array.</li>
+    </ol>
+    <p class="mb-4"><strong>Example:</strong></p>
+    <pre class="bg-gray-800 text-gray-200 p-4 rounded-md overflow-x-auto mb-4"><code class="font-mono text-sm">// ... inside the 'theory' object's children array
+{
+  id: 'theory-rhythm',
+  label: 'Rhythm',
+  icon: MusicIcon,
+  contentPath: '/content/theory/rhythm.md'
+}</code></pre>
+    <ul class="list-disc list-inside mb-4 pl-4 space-y-2">
+        <li><strong><code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">id</code></strong>: A unique identifier for the item. The convention is <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">parent-id-item-name</code>.</li>
+        <li><strong><code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">label</code></strong>: The text that will be displayed in the menu.</li>
+        <li><strong><code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">icon</code></strong>: The icon to display. You can reuse existing icons like <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">MusicIcon</code> or <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">FolderIcon</code> from <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">icons.js</code>.</li>
+        <li><strong><code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">contentPath</code></strong>: The path to the markdown file that holds this item's content.</li>
+    </ul>
+
+    <h3 class="text-xl font-medium mt-4 mb-2">Step 2: Create the Content File</h3>
+    <ol class="list-decimal list-inside mb-4 pl-4 space-y-2">
+        <li>Create a new file at the exact path you specified in <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">contentPath</code>. In this case, you would create <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">content/theory/rhythm.md</code>.</li>
+        <li>Add your markdown content to this new file.</li>
+    </ol>
+    <p class="mb-4"><strong>Example <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">content/theory/rhythm.md</code>:</strong></p>
+    <pre class="bg-gray-800 text-gray-200 p-4 rounded-md overflow-x-auto mb-4"><code class="font-mono text-sm"># Rhythm
+
+Rhythm is music's pattern in time. Whatever other elements a given piece of music may have (e.g., patterns of pitch or timbre), rhythm is the one indispensable element of all music.</code></pre>
+
+    <h3 class="text-xl font-medium mt-4 mb-2">(Optional) Step 3: Add Fallback Content</h3>
+     <p class="mb-4">If the application can't fetch the file from the server (e.g., during local development without a server), it will use the fallback content from <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">app-data.js</code>.</p>
+    <ol class="list-decimal list-inside mb-4 pl-4 space-y-2">
+        <li>Open <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">app-data.js</code>.</li>
+        <li>Add a new entry to the <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">contentMap</code> object that matches the <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">contentPath</code>.</li>
+    </ol>
+     <p class="mb-4"><strong>Example:</strong></p>
+    <pre class="bg-gray-800 text-gray-200 p-4 rounded-md overflow-x-auto mb-4"><code class="font-mono text-sm">export const contentMap = {
+    // ... existing entries
+    '/content/theory/rhythm.md': `# Rhythm (Fallback)\\n\\nThis is fallback content for Rhythm.`,
+};</code></pre>
+    
+    <hr class="my-6 border-gray-300 dark:border-gray-600">
+
+    <h2 class="text-2xl font-semibold mt-6 mb-3">How to Add a New Top-Level Menu Item</h2>
+    <p class="mb-4">To add a completely new category, like "Instruments", follow these steps.</p>
+    
+    <h3 class="text-xl font-medium mt-4 mb-2">Step 1: Edit <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">app-data.js</code></h3>
+    <ol class="list-decimal list-inside mb-4 pl-4 space-y-2">
+        <li>Open <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">app-data.js</code>.</li>
+        <li>Add a new object to the main <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">menuItems</code> array. A top-level item should have a <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">children</code> array containing its submenu items.</li>
+    </ol>
+    <p class="mb-4"><strong>Example:</strong></p>
+    <pre class="bg-gray-800 text-gray-200 p-4 rounded-md overflow-x-auto mb-4"><code class="font-mono text-sm">// ... inside the menuItems array
+{
+  id: 'instruments',
+  label: 'Instruments',
+  icon: FolderIcon, // FolderIcon is a good choice for a category
+  children: [
+    {
+      id: 'instruments-piano',
+      label: 'Piano',
+      icon: MusicIcon,
+      contentPath: '/content/instruments/piano.md'
+    },
+    {
+      id: 'instruments-guitar',
+      label: 'Guitar',
+      icon: MusicIcon,
+      contentPath: '/content/instruments/guitar.md'
+    }
+  ]
+}</code></pre>
+
+    <h3 class="text-xl font-medium mt-4 mb-2">Step 2: Create Content Files</h3>
+    <ol class="list-decimal list-inside mb-4 pl-4 space-y-2">
+        <li>Create the necessary directory structure (e.g., create an <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">instruments</code> folder inside <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">content</code>).</li>
+        <li>Create the content files you defined: <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">content/instruments/piano.md</code> and <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">content/instruments/guitar.md</code>.</li>
+        <li>Add content to each file.</li>
+        <li>(Optional) Add fallback content for these new files in <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">app-data.js</code>.</li>
+    </ol>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-600">
+    
+    <h2 class="text-2xl font-semibold mt-6 mb-3">How to Add a New Icon</h2>
+    <p class="mb-4">If you want to use a new icon:</p>
+
+    <ol class="list-decimal list-inside mb-4 pl-4 space-y-2">
+        <li>Find or create an SVG for your icon.</li>
+        <li>Open <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">icons.js</code>.</li>
+        <li>Add and export a new constant containing the SVG string.</li>
+    </ol>
+    <p class="mb-4"><strong>Example:</strong></p>
+    <pre class="bg-gray-800 text-gray-200 p-4 rounded-md overflow-x-auto mb-4"><code class="font-mono text-sm">export const GuitarIcon = `&lt;svg class="w-6 h-6" ... &gt;...&lt;/svg&gt;`;</code></pre>
+    <ol class="list-decimal list-inside mb-4 pl-4 space-y-2" start="4">
+        <li>Import the new icon at the top of <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">app-data.js</code>:</li>
+    </ol>
+     <pre class="bg-gray-800 text-gray-200 p-4 rounded-md overflow-x-auto mb-4"><code class="font-mono text-sm">import { FolderIcon, MusicIcon, GuitarIcon } from './icons.js';</code></pre>
+    <ol class="list-decimal list-inside mb-4 pl-4 space-y-2" start="5">
+        <li>You can now use <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">GuitarIcon</code> in the <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">icon</code> property of your menu item objects in <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md font-mono text-sm">app-data.js</code>.</li>
+    </ol>
+</div>
