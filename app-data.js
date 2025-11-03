@@ -3,80 +3,253 @@ import { FolderIcon, MusicIcon } from './icons.js';
 // --- Menu Structure Definition ---
 export const menuItems = [
   {
+    id: 'saralis',
+    label: 'Sarali Varasa',
+    icon: FolderIcon,
+    children: [
+      {
+        id: 'sarali-varasa-1',
+        label: 'Sarali Varasa',
+        icon: MusicIcon,
+        contentPath: '/content/saralis/sarali-varasa.html'
+      }
+    ]
+  },
+  {
+    id: 'jantis',
+    label: 'Janti Varasa',
+    icon: FolderIcon,
+    children: [
+      {
+        id: 'janti-varasa-1',
+        label: 'Janti Varasa',
+        icon: MusicIcon,
+        contentPath: '/content/jantis/janti-varasa.html'
+      }
+    ]
+  },
+  {
+    id: 'dhatus',
+    label: 'Dhatu Varasa',
+    icon: FolderIcon,
+    children: [
+      {
+        id: 'dhatu-varasa-1',
+        label: 'Dhatu Varasa',
+        icon: MusicIcon,
+        contentPath: '/content/dhatus/dhatu-varasa.html'
+      }
+    ]
+  },
+  {
+    id: 'alankarams',
+    label: 'Alankaarams',
+    icon: FolderIcon,
+    children: [
+      {
+        id: 'eka-1',
+        label: 'Eka Talam',
+        icon: MusicIcon,
+        contentPath: '/content/alankarams/eka-talam.html'
+      },
+      {
+        id: 'rupaka-1',
+        label: 'Rupaka Talam',
+        icon: MusicIcon,
+        contentPath: '/content/alankarams/rupaka-talam.html'
+      },
+      {
+        id: 'triputa-1',
+        label: 'Triputa Talam',
+        icon: MusicIcon,
+        contentPath: '/content/alankarams/triputa-talam.html'
+      },
+      {
+        id: 'matya-1',
+        label: 'Matya Talam',
+        icon: MusicIcon,
+        contentPath: '/content/alankarams/matya-talam.html'
+      },
+      {
+        id: 'dhruva-1',
+        label: 'Dhruva Talam',
+        icon: MusicIcon,
+        contentPath: '/content/alankarams/dhruva-talam.html'
+      },
+      {
+        id: 'jampe-1',
+        label: 'Jampe Talam',
+        icon: MusicIcon,
+        contentPath: '/content/alankarams/jampe-talam.html'
+      },
+      {
+        id: 'ata-1',
+        label: 'Ata Talam',
+        icon: MusicIcon,
+        contentPath: '/content/alankarams/ata-talam.html'
+      }
+    ]
+  },
+  {
+    id: 'geetams',
+    label: 'Geetams',
+    icon: FolderIcon,
+    children: [
+      {
+        id: 'geetam-1',
+        label: '01. Sri Gananaadha',
+        icon: MusicIcon,
+        contentPath: '/content/geetams/01-sri-gananaadha.html'
+      },
+      {
+        id: 'geetam-2',
+        label: '02. Kunda Gowra',
+        icon: MusicIcon,
+        contentPath: '/content/geetams/02-kunda-gowra.html'
+      },
+      {
+        id: 'geetam-3',
+        label: '03. Keraya Neeranu',
+        icon: MusicIcon,
+        contentPath: '/content/geetams/03-keraya-neeranu.html'
+      },
+      {
+        id: 'geetam-4',
+        label: '04. Padumanaabha',
+        icon: MusicIcon,
+        contentPath: '/content/geetams/04-padumanaabha.html'
+      },
+      {
+        id: 'geetam-5',
+        label: '05. Vara Veena',
+        icon: MusicIcon,
+        contentPath: '/content/geetams/05-vara-veena.html'
+      },
+      {
+        id: 'geetam-6',
+        label: '06. Vaani Veena',
+        icon: MusicIcon,
+        contentPath: '/content/geetams/06-vaani-veena.html'
+      },
+      {
+        id: 'geetam-7',
+        label: '07. Kamalajadala',
+        icon: MusicIcon,
+        contentPath: '/content/geetams/07-kamalajadala.html'
+      },
+      {
+        id: 'geetam-8',
+        label: '08. Sree Lola',
+        icon: MusicIcon,
+        contentPath: '/content/geetams/08-sree-lola.html'
+      },
+      {
+        id: 'geetam-9',
+        label: '09. Mandhara Dhaare',
+        icon: MusicIcon,
+        contentPath: '/content/geetams/09-mandhara-dhaare.html'
+      }
+    ]
+  },
+  {
+    id: 'swarajathis',
+    label: 'Swarajathis',
+    icon: FolderIcon,
+    children: [
+      {
+        id: 'swarajathi-1',
+        label: '01. Ra ra venu',
+        icon: MusicIcon,
+        contentPath: '/content/swarajathis/01-bilahari-swarajathi.html'
+      },
+      {
+        id: 'swarajathi-2',
+        label: '02. Kalyani',
+        icon: MusicIcon,
+        contentPath: '/content/swarajathis/02-kalyani-swarajathi.html'
+      },
+      {
+        id: 'swarajathi-3',
+        label: '03. Hamsadhwani',
+        icon: MusicIcon,
+        contentPath: '/content/swarajathis/03-hamsadhwani-swarajathi.html'
+      },
+      {
+        id: 'swarajathi-4',
+        label: '04. Jhinjhoti',
+        icon: MusicIcon,
+        contentPath: '/content/swarajathis/04-jhinjhoti-swarajathi.html'
+      }
+    ]
+  },
+  {
     id: 'varnams',
     label: 'Varnams',
     icon: FolderIcon,
     children: [
       {
+        id: '01-mohana-varnam',
+        label: '01. Mohana - Ninnu Kori',
+        icon: MusicIcon,
+        contentPath: '/content/varnams/01-mohana-ninnu-kori.html'
+      },
+      {
+        id: '02-shankarabharanam-saami-ninne',
+        label: '02. Shankarabharanam - Saami Ninne',
+        icon: MusicIcon,
+        contentPath: '/content/varnams/02-shankarabharanam-saami-ninne.html'
+      },
+      {
         id: 'varnam-hamsadhwani-jalajaksha',
-        label: 'Hamsadhwani: Jalajaksha',
+        label: '03. Hamsadhwani - Jalajaksha',
         icon: MusicIcon,
-        contentPath: '/content/varnams/varnam-hamsadhwani-jalajaksha.html'
+        contentPath: '/content/varnams/03-hamsadhwani-jalajaksha.html'
       },
       {
-        id: 'theory-chords',
-        label: 'Chords',
+        id: '04-shree-saami-ninne',
+        label: '04. Shree - Saami Ninne',
         icon: MusicIcon,
-        contentPath: '/content/theory/chords.md'
+        contentPath: '/content/varnams/04-shree-saami-ninne.html'
       },
       {
-        id: 'theory-harmony',
-        label: 'Harmony',
+        id: '05-kalyani-vanajakshi',
+        label: '05. Kalyani - Vanajakshi',
         icon: MusicIcon,
-        contentPath: '/content/theory/harmony.md'
+        contentPath: '/content/varnams/05-kalyani-vanajakshi.html'
+      },
+      {
+        id: '06-thodi-era-naa-pai',
+        label: '06. Thodi - Era naa pai',
+        icon: MusicIcon,
+        contentPath: '/content/varnams/06-thodi-era-naa-pai.html'
+      },
+      {
+        id: '07-navaragamalika',
+        label: '07. Navaragamalika',
+        icon: MusicIcon,
+        contentPath: '/content/varnams/07-navaragamalika.html'
+      },
+      {
+        id: '08-kambhoji',
+        label: '08. Kambhoji',
+        icon: MusicIcon,
+        contentPath: '/content/varnams/08-kambhoji.html'
       }
     ]
   },
   {
-    id: 'history',
-    label: 'Music History',
+    id: 'kritis',
+    label: 'Kritis',
     icon: FolderIcon,
     children: [
       {
-        id: 'history-baroque',
-        label: 'Baroque Period',
+        id: '01-krithi-vighnarajasree',
+        label: 'Vighnaraja Sree',
         icon: MusicIcon,
-        contentPath: '/content/history/baroque.md'
-      },
-      {
-        id: 'history-classical',
-        label: 'Classical Period',
-        icon: MusicIcon,
-        contentPath: '/content/history/classical.md'
-      },
-      {
-        id: 'history-romantic',
-        label: 'Romantic Period',
-        icon: MusicIcon,
-        contentPath: '/content/history/romantic.md'
+        contentPath: '/content/krithis/01-krithi-vighnarajasree.html'
       }
     ]
   },
-  {
-    id: 'composers',
-    label: 'Composers',
-    icon: FolderIcon,
-    children: [
-      {
-        id: 'composers-bach',
-        label: 'Bach',
-        icon: MusicIcon,
-        contentPath: '/content/composers/bach.md'
-      },
-      {
-        id: 'composers-mozart',
-        label: 'Mozart',
-        icon: MusicIcon,
-        contentPath: '/content/composers/mozart.md'
-      },
-      {
-        id: 'composers-beethoven',
-        label: 'Beethoven',
-        icon: MusicIcon,
-        contentPath: '/content/composers/beethoven.md'
-      }
-    ]
-  }
 ];
 
 
