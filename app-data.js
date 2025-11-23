@@ -179,6 +179,12 @@ export const menuItems = [
         label: '04. Jhinjhoti',
         icon: MusicIcon,
         contentPath: '/content/swarajathis/04-jhinjhoti-swarajathi.html'
+      },
+      {
+        id: 'swarajathi-5',
+        label: '05. Harikambhoji',
+        icon: MusicIcon,
+        contentPath: '/content/swarajathis/05-harikambhoji-swarajathi.html'
       }
     ]
   },
