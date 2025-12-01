@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carnatic Music Class Notes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-gray-50 text-gray-900 antialiased h-screen overflow-hidden flex flex-col">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200 px-6 py-4 flex flex-col sm:flex-row items-center justify-between shadow-sm z-20 relative shrink-0">
+      <div class="flex items-center gap-3 self-start sm:self-center mb-4 sm:mb-0">
+        <div class="bg-blue-600 p-2 rounded-lg">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+        </div>
+        <h1 class="text-xl font-bold text-gray-800 tracking-tight">Carnatic Music Class</h1>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto items-end sm:items-center">
+        <!-- Level 1 Dropdown: Category -->
+        <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
+          <label for="categorySelect" class="text-xs font-semibold uppercase tracking-wider text-gray-500 hidden sm:block">
+            
+          </label>
+          <div class="relative w-full sm:w-auto">
+            <select id="categorySelect" class="appearance-none w-full sm:w-48 bg-gray-50 border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500 transition-colors text-sm font-medium">
+              <!-- Populated by JS -->
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
+              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Level 2 Dropdown: Document -->
+        <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
+           <label for="itemSelect" class="text-xs font-semibold uppercase tracking-wider text-gray-500 hidden sm:block">
+            
+          </label>
+          <div class="relative w-full sm:w-auto">
+            <select id="itemSelect" class="appearance-none w-full sm:w-64 bg-blue-50 border border-blue-200 text-blue-800 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500 transition-colors text-sm font-medium">
+              <!-- Populated by JS -->
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-blue-700">
+              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content Area -->
+    <main class="flex-1 relative bg-white w-full h-full overflow-hidden">
+      <iframe id="contentFrame" class="absolute inset-0 w-full h-full border-0 block" frameborder="0" style="border: none;" sandbox="allow-scripts allow-same-origin"></iframe>
+    </main>
+
+    <!-- Load Data Source -->
+    <script src="data.js"></script>
+
+    <script>
+      // --- Constants & Config ---
+      const STORAGE_KEY = 'docuframe_state';
+      
+      // --- DOM Elements ---
+      const categorySelect = document.getElementById('categorySelect');
+      const itemSelect = document.getElementById('itemSelect');
+      const iframe = document.getElementById('contentFrame');
+      let DATA = [];
+
+      // --- Helper Functions ---
+      
+      function saveState(categoryId, itemId) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ categoryId, itemId }));
+      }
+
+      function loadState() {
+        try {
+          const state = localStorage.getItem(STORAGE_KEY);
+          return state ? JSON.parse(state) : null;
+        } catch (e) {
+          console.error("Failed to load state", e);
+          return null;
+        }
+      }
+
+      function renderContent(item) {
+        if (!item || !item.file) return;
+        iframe.removeAttribute('srcdoc'); 
+        iframe.src = item.file;
+      }
+
+      // --- Main Logic ---
+
+      function init() {
+        if (DATA.length === 0) return;
+
+        // Populate Categories
+        categorySelect.innerHTML = DATA.map(c => 
+          `<option value="${c.id}">${c.label}</option>`
+        ).join('');
+
+        // Restore State
+        const savedState = loadState();
+        let initialCategory = DATA[0];
+
+        if (savedState && savedState.categoryId) {
+          const found = DATA.find(c => c.id === savedState.categoryId);
+          if (found) {
+            initialCategory = found;
+            categorySelect.value = initialCategory.id;
+          }
+        }
+
+        // Initialize Items
+        populateItems(initialCategory.id, savedState?.itemId);
+      }
+
+      function populateItems(categoryId, preferredItemId = null) {
+        const category = DATA.find(c => c.id === categoryId);
+        if (!category) return;
+
+        itemSelect.innerHTML = category.items.map(item => 
+          `<option value="${item.id}">${item.label}</option>`
+        ).join('');
+
+        // Determine selection
+        let selectedItem = category.items[0];
+        if (preferredItemId) {
+          const found = category.items.find(i => i.id === preferredItemId);
+          if (found) {
+            selectedItem = found;
+            itemSelect.value = selectedItem.id;
+          }
+        }
+
+        // Render and Save
+        renderContent(selectedItem);
+        saveState(category.id, selectedItem.id);
+      }
+
+      // --- Event Listeners ---
+
+      categorySelect.addEventListener('change', (e) => {
+        populateItems(e.target.value);
+      });
+
+      itemSelect.addEventListener('change', (e) => {
+        const categoryId = categorySelect.value;
+        const itemId = e.target.value;
+        
+        const category = DATA.find(c => c.id === categoryId);
+        const item = category.items.find(i => i.id === itemId);
+        
+        if (item) {
+          renderContent(item);
+          saveState(categoryId, itemId);
+        }
+      });
+
+      // --- Bootstrap ---
+      
+      function attemptStart() {
+        if (window.DOCUFRAME_DATA && window.DOCUFRAME_DATA.length > 0) {
+          console.log("Initializing DocuFrame with data...");
+          DATA = window.DOCUFRAME_DATA;
+          init();
+          return true;
+        }
+        return false;
+      }
+
+      function showFailure() {
+        if (attemptStart()) return; // One last try
+
+        console.error("DOCUFRAME_DATA is missing or empty", window.DOCUFRAME_DATA);
+        document.body.innerHTML = `
+          <div class="flex flex-col items-center justify-center h-full text-red-600 p-4 text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            <h2 class="text-xl font-bold mb-2">Error: Data Failed to Load</h2>
+            <p>Could not load configuration from <code class="bg-red-100 px-1 rounded">data.js</code>.</p>
+            <p class="text-sm mt-4 text-gray-500">Please ensure the file exists and is valid JavaScript.</p>
+          </div>
+        `;
+      }
+
+      // 1. Try immediately (if script loaded synchronously)
+      if (!attemptStart()) {
+        // 2. Try on DOMContentLoaded (if script was deferred)
+        document.addEventListener('DOMContentLoaded', () => {
+          if (!attemptStart()) {
+             // 3. Last resort on window.load (for slow assets)
+             window.addEventListener('load', () => {
+               if (!attemptStart()) {
+                 showFailure();
+               }
+             });
+          }
+        });
+      }
+    </script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+{
+  "name": "Music Class Notes",
+  "description": "A streamlined document viewer featuring a two-level dependent dropdown navigation system to load content dynamically into an iframe.",
+  "requestFramePermissions": []
+}
