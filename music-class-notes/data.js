@@ -266,6 +266,11 @@ window.DOCUFRAME_DATA = [
                 id: '01-krithi-vighnarajasree',
                 label: 'Vighnaraja Sree',
                 file: 'content/krithis/01-krithi-vighnarajasree.html'
+            },
+            {
+                id: '16-pari-palayamam',
+                label: 'Pari Palayamam',
+                file: 'content/krithis/16-pari-palayamam.html'
             }
         ]
     }
