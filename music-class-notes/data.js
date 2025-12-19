@@ -268,9 +268,84 @@ window.DOCUFRAME_DATA = [
                 file: 'content/krithis/01-krithi-vighnarajasree.html'
             },
             {
+                id: '02-krithi-shive-pahimam',
+                label: 'Shive Pahimam',
+                file: 'content/krithis/02-krithi-shive-pahimam.html'
+            },
+            {
+                id: '03-krithi',
+                label: 'Sadaa Paalaya',
+                file: 'content/krithis/03-krithi-sadaa-paalaya.html'
+            },
+            {
+                id: '04-krithi',
+                label: 'Raa Raa Raajeeva',
+                file: 'content/krithis/04-krithi-raa-raa-raajeeva.html'
+            },
+            {
+                id: '05-krithi',
+                label: 'Kamakshi Lokasakshini',
+                file: 'content/krithis/05-krithi-kamakshi-lokasakshini.html'
+            },
+            {
+                id: '06-krithi',
+                label: 'Jai Jai Devi',
+                file: 'content/krithis/06-krithi-jai-jai-devi.html'
+            },
+            {
+                id: '07-krithi',
+                label: 'Bho Shambho',
+                file: 'content/krithis/07-bho-shambho.html'
+            },
+            {
+                id: '08-krithi',
+                label: 'Lokadolilla Inta',
+                file: 'content/krithis/08-lokadolilla.html'
+            },
+            {
+                id: '09-krithi',
+                label: 'Jaya Jaya He Bhagavathi',
+                file: 'content/krithis/09-jaya-jayahe-bhagavathi.html'
+            },
+            {
+                id: '10-krithi',
+                label: 'Naadu Pai Palikeru',
+                file: 'content/krithis/10-naadupai.html'
+            },
+            {
+                id: '11-krithi',
+                label: 'Sri Chamundeswari',
+                file: 'content/krithis/11-sri-chamundeswari-bilahari.html'
+            },
+            {
+                id: '12-krithi',
+                label: 'Enenu Daanava Maadali',
+                file: 'content/krithis/12-enenu-daanava.html'
+            },
+            {
+                id: '13-krithi',
+                label: 'Raavayya Bhadrachala Raama',
+                file: 'content/krithis/13-raavayya-bhadrachala.html'
+            },
+            {
+                id: '14-krithi',
+                label: 'Sri Dum Durge',
+                file: 'content/krithis/14-sri-dum-durge.html'
+            },
+            {
+                id: '15-krithi',
+                label: 'Gajaananayutham',
+                file: 'content/krithis/15-gajaananayutham.html'
+            },
+            {
+                id: '16-sharanu-sharanu',
+                label: 'Sharanu Sharanu Neeku',
+                file: 'content/krithis/16-sharanu-sharanu-neeku.html'
+            },
+            {
                 id: '16-pari-palayamam',
                 label: 'Pari Palayamam',
-                file: 'content/krithis/16-pari-palayamam.html'
+                file: 'content/krithis/17-pari-palayamam.html'
             }
         ]
     }
