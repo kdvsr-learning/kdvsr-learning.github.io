@@ -2,61 +2,6 @@
 // We explicitly assign to window to ensure global availability across scripts
 window.DOCUFRAME_DATA = [
     {
-        id: 'engineering',
-        label: 'Engineering Specs',
-        items: [
-            {
-                id: 'frontend-guidelines',
-                label: 'Frontend Guidelines',
-                file: 'content/frontend-guidelines.html'
-            },
-            {
-                id: 'api-standards',
-                label: 'API Standards',
-                file: 'content/api-standards.html'
-            },
-            {
-                id: 'deploy-process',
-                label: 'Deployment Process',
-                file: 'content/deploy-process.html'
-            }
-        ]
-    },
-    {
-        id: 'hr',
-        label: 'Human Resources',
-        items: [
-            {
-                id: 'onboarding',
-                label: 'Onboarding Checklist',
-                file: 'content/onboarding.html'
-            },
-            {
-                id: 'benefits',
-                label: 'Benefits Overview',
-                file: 'content/benefits.html'
-            }
-        ]
-    },
-    {
-        id: 'legal',
-        label: 'Legal & Compliance',
-        items: [
-            {
-                id: 'privacy-policy',
-                label: 'Privacy Policy',
-                file: 'content/privacy-policy.html'
-            },
-            {
-                id: 'terms-of-service',
-                label: 'Terms of Service',
-                file: 'content/terms-of-service.html'
-            }
-        ]
-    }
-];
-window.DOCUFRAME_DATA = [
-    {
         id: 'saralis',
         label: 'Sarali Varasa',
         items: [
@@ -255,6 +200,11 @@ window.DOCUFRAME_DATA = [
                 id: '08-kambhoji',
                 label: '08. Kambhoji',
                 file: 'content/varnams/08-kambhoji.html'
+            },
+            {
+                id: '09-bhairavi',
+                label: '08. Bhairavi',
+                file: 'content/varnams/09-bhairavi-viriboni.html'
             }
         ]
     },
@@ -346,6 +296,17 @@ window.DOCUFRAME_DATA = [
                 id: '16-pari-palayamam',
                 label: 'Pari Palayamam',
                 file: 'content/krithis/17-pari-palayamam.html'
+            }
+        ]
+    },
+    {
+        id: 'songs',
+        label: 'Songs',
+        items: [
+            {
+                id: '2026-concert',
+                label: '2026 Concert Songs',
+                file: 'content/songs/2026-concert-songs.html'
             }
         ]
     }
